@@ -18,7 +18,7 @@ class Writer(TimeRotateLoggerInterface):
     NAME = "WriteLog"
 
     def master(self, master, master_db, start=None, end=None):
-        for date in master.find_not(2, start, end):
+        for date in master.find(1, start, end):
             self.write_master(master, master_db, date)
 
     def write_master(self, master, master_db, date):
