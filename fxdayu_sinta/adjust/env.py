@@ -18,9 +18,14 @@ def get_db():
     return create_client(**config[CLIENT])[config[DB]]
 
 
-def get_adj_dir():
+def get_home():
     from fxdayu_sinta.adjust import PATH
     return read_config()[PATH]
+
+
+def get_adj_dir():
+    from fxdayu_sinta.adjust import ADJ
+    return os.path.join(get_home(), ADJ)
 
 
 def create(path):

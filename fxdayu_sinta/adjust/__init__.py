@@ -1,5 +1,6 @@
-PATH = "adj_bundle_path"
+PATH = "home"
 CLIENT = "client"
 DB = "db"
+ADJ = "bundle/ex_cum_factor.bcolz"
 
 

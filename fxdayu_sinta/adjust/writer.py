@@ -7,14 +7,22 @@ import six
 class AdjustWriter(object):
 
     def __init__(self, reader, db):
-        self.reader = reader
+        self._reader = reader
         self.db = db
+
+    @property
+    def reader(self):
+        if self._reader is not None:
+            return self._reader
+        else:
+            self._reader = ExFactor.conf()
+            return self._reader
 
     @classmethod
     def env(cls):
         from fxdayu_sinta.adjust.env import get_db
 
-        return cls(ExFactor.conf(), get_db())
+        return cls(None, get_db())
 
     def write(self, code):
         adjust = self.reader.read(code)
