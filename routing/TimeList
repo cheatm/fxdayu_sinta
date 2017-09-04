@@ -1,0 +1,2 @@
+10 18 * * 1-5 /bin/bash /routing/CommandList.sh >> /data/Log/routing log 2>&1
+0 0 * * 2-6 /bin/bash /routing/CommandList.sh >> /data/Log/routing log 2>&1
