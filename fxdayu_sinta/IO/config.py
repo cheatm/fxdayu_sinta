@@ -21,7 +21,7 @@ def get_storage():
 
 
 def get_files():
-    return get_storage()[FILES]
+    return get_storage().get(FILES, "/data")
 
 
 def get_mongo():

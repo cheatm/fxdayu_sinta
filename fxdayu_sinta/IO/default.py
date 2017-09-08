@@ -8,7 +8,7 @@ storage = {
             "D": {"db": "Stock_D", "unit": 1}
         }
     },
-    "dir_root": "",
+    "dir_root": "/data",
     "freq": ["H", "D"]
 }
 

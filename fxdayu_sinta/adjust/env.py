@@ -7,7 +7,11 @@ config_path = os.path.join(root, "adjust.json")
 
 
 def read_config():
-    return json.load(open(config_path))
+    try:
+        return json.load(open(config_path))
+    except IOError:
+        from fxdayu_sinta.adjust.config import adjust
+        return adjust
 
 
 def get_db():
@@ -15,12 +19,12 @@ def get_db():
     from fxdayu_sinta.utils.mongo import create_client
 
     config = read_config()
-    return create_client(**config[CLIENT])[config[DB]]
+    return create_client(**config.get(CLIENT, {}))[config.get(DB, "adjust")]
 
 
 def get_home():
-    from fxdayu_sinta.adjust import PATH
-    return read_config()[PATH]
+    from fxdayu_sinta.adjust import HOME
+    return read_config().get(HOME, "/rqalpha")
 
 
 def get_adj_dir():
@@ -29,9 +33,9 @@ def get_adj_dir():
 
 
 def create(path):
-    from fxdayu_sinta.adjust.config import adjust, PATH
+    from fxdayu_sinta.adjust.config import adjust, HOME
 
-    adjust[PATH] = path
+    adjust[HOME] = path
 
     if not os.path.exists(root):
         os.makedirs(root)
@@ -45,3 +49,4 @@ def generate():
     return {'create': click.Command("create", callback=create,
                                     help="Create adjust config file with rqalpha bundle adjust data path.",
                                     params=[click.Argument(["path"], nargs=1)])}
+

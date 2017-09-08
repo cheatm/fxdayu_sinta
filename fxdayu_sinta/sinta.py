@@ -8,7 +8,8 @@ command_list = ["fxdayu_sinta.command.master",
                 "fxdayu_sinta.command.requester",
                 "fxdayu_sinta.command.freq",
                 "fxdayu_sinta.command.writer",
-                "fxdayu_sinta.command.init"]
+                "fxdayu_sinta.command.init",
+                "fxdayu_sinta.command.idx"]
 commands = {}
 
 
@@ -21,5 +22,7 @@ sinta = click.Group('sinta', commands)
 
 
 if __name__ == '__main__':
+    import sys
 
+    sys.argv.extend("idx".split(" "))
     sinta()

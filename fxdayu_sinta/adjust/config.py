@@ -1,8 +1,8 @@
-from fxdayu_sinta.adjust import PATH, CLIENT, DB
+from fxdayu_sinta.adjust import HOME, CLIENT, DB
 
 
 adjust = {
-    PATH: "",
+    HOME: "/rqalpha",
     CLIENT: {},
     DB: "adjust"
 }
