@@ -17,6 +17,4 @@ rqadjust = click.Group("rqadjust", commands)
 
 
 if __name__ == '__main__':
-    import sys
-    sys.argv.append("update")
     rqadjust()
