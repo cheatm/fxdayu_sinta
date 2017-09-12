@@ -19,10 +19,3 @@ for name in command_list:
 
 
 sinta = click.Group('sinta', commands)
-
-
-if __name__ == '__main__':
-    import sys
-
-    sys.argv.extend("idx".split(" "))
-    sinta()

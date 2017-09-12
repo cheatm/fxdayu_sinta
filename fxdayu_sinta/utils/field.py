@@ -39,8 +39,8 @@ START_OPTION = Option(["-s", "--start"], type=STRING, default=None, required=Fal
 END_OPTION = Option(["-e", "--end"], type=STRING, default=None, required=False,
                     help="Time format: yyyy-mm-dd")
 END_OPTION_EMPTY = Option(["-e", "--end"], type=STRING, default="", required=False,
-                          help="Time format: yyyy-mm-dd")
+                          help="Time format: yyyy-mm-dd, default empty")
 START_OPTION_EMPTY = Option(["-s", "--start"], type=STRING, default="", required=False,
-                            help="Time format: yyyy-mm-dd")
+                            help="Time format: yyyy-mm-dd, default empty")
 FREQ_OPTION = Option(['--freq'], type=STRING, default=None, required=False,
                      help="Specify frequency like H,D .")

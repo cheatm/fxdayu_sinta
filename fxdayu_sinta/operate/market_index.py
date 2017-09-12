@@ -1,8 +1,8 @@
 from fxdayu_sinta.IO.log import TimeRotateLoggerInterface
 from fxdayu_sinta.IO.source import market_index
-from fxdayu_data.handler.mongo_handler import update
-from fxdayu_sinta.IO.environment import get_env, init_env
-from fxdayu_sinta.IO import MONGO, FREQ
+from fxdayu_sinta.utils.mongo import update
+from fxdayu_sinta.IO.environment import get_env
+from fxdayu_sinta.IO import FREQ
 
 
 class IdxRequester(TimeRotateLoggerInterface):
