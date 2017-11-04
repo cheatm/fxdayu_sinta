@@ -12,3 +12,4 @@ sinta freq update
 sinta freq check
 sinta write freq
 sinta freq check
+sinta idx
