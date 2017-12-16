@@ -1,1 +1,1 @@
-{"home": "/rqalpha", "db": "adjust", "client": {"host": "localhost"}}
+{"home": "/rqalpha", "db": "adjust", "client": {"host": "mongodb://localhost:27017"}}
