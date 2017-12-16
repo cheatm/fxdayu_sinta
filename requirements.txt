@@ -3,4 +3,4 @@ pymongo==3.4.0
 numpy>=1.11.3
 pandas>=0.18.1
 requests>=2.12.4
-tushare>=0.8.2
+tushare==0.8.2

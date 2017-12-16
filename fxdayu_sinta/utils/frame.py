@@ -5,6 +5,9 @@ from fxdayu_sinta.IO.sina_tick import tick2min
 from datetime import timedelta
 
 
+COLUMNS = ["close", "open", "high", "low", "volume"]
+
+
 class TimeEdge():
     def __init__(self, edge):
         self.edge = edge
@@ -85,10 +88,21 @@ def match(series, value):
 
 def candle(code, date, frame):
     raw = tick2min(frame)
-    if is_sz(code):
-        raw = sz_slice(raw)
+    return modify(raw, date2index(date))
 
-    return fill_candle(pd.DataFrame(raw, date2index(date)))
+
+def modify(data, idx):
+    end = idx[-1]
+    last = data[data.index>=end]
+    data.loc[end, "volume"] = last["volume"].sum()
+    data.loc[end, "open"] = last["open"][0]
+    data.loc[end, "close"] = last["close"][-1]
+    data.loc[end, "high"] = last["high"].max()
+    data.loc[end, "low"] = last["low"].min()
+    data = pd.DataFrame(data, idx, COLUMNS)
+    data["volume"].fillna(0, inplace=True)
+    data["close"].ffill(inplace=True)
+    return data.ffill(axis=1)
 
 
 def fill_candle(frame):
@@ -128,3 +142,4 @@ def sz_slice(f):
 
 def is_sz(code):
     return code.endswith('.XSHE')
+
